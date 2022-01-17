@@ -1,7 +1,257 @@
 {
-    "users": [],
+"API": "Recipes of the world",
+  "users": [
+    {
+      "description": "Register a new user",
+      "endpoint": "/api/users/register",
+      "action": "POST",
+      "parameters": {
+        "name": "Name Surname",
+        "email": "example@mail.com",
+        "password": "Pass12345! [(Should contain a min/max of 8/12 characters, using a mix of uppercase and lowercase letters, numbers, and special characters.)]"
+      },
+      "response": {
+        "name": "Name Surname",
+        "email": "example@mail.com"
+      }
+    },
+    {
+      "description": "Log in User",
+      "endpoint": "/api/users/login",
+      "action": "POST",
+      "parameters": {
+        "email": "example@mail.com",
+        "password": "Pass12345!"
+      },
+      "response": {
+        "token": "",
+        "myUser": {
+          "id": "61e4000000b4400000c8f9",
+          "name": "name Surname",
+          "email": "example@mail.com",
+          "emoji": "🥪"
+        }
+      }
+    },
 
-    "recipes": [],
+    {
+      "description": "Log out User",
+      "endpoint": "/api/users/logout",
+      "action": "POST",
+      "authentication": { "bearerToken": "" },
+      "parameters": {
+        "email": "example@mail.com",
+        "password": "Pass12345!"
+      },
+      "response": "null"
+    },
 
-    "ingredients" : []
+    {
+      "description": "Find User by id and get the user profile",
+      "endpoint": "/api/users/:id",
+      "action": "GET",
+      "authentication": { "bearerToken": "" },
+      "response": ""
+    },
+    {
+      "description": "Add User favorite recipes",
+      "endpoint": "/api/users/addFavorite/:id",
+      "action": "PATCH",
+      "authentication": { "bearerToken": "" },
+      "parameters": {
+        "favorites": ["recipe_id"]
+      },
+      "response": {
+        "_id": "id",
+        "name": "name",
+        "email": "example@mail.com",
+        "password": "",
+        "emoji": "🥪",
+        "favorites": ["recipe_id"]
+      }
+    }
+  ],
+  "recipes": [
+    {
+      "description": "Get all Recipes",
+      "endpoint": "/api/recipes",
+      "action": "GET",
+      "response": [
+        {
+          "_id": "",
+          "name": "",
+          "nation": "",
+          "description": "",
+          "kcal": 0,
+          "img": "",
+          "ingredients": [
+            {
+              "_id": "",
+              "name": "",
+              "source": "",
+              "food": "",
+              "gluten": false,
+              "img": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Add a new Recipe",
+      "endpoint": "/api/recipes",
+      "action": "POST",
+      "authentication": { "bearerToken": "" },
+      "parameters": {
+        "name": "",
+        "nation": "",
+        "description": "",
+        "kcal": 0,
+        "ingredients": [""],
+        "img": ""
+      },
+      "response": {
+        "_id": "",
+        "name": "",
+        "nation": "",
+        "description": "",
+        "kcal": 0,
+        "ingredients": [""],
+        "img": ""
+      }
+    },
+    {
+      "description": "Get a recipe",
+      "endpoint": "/api/recipes/:id",
+      "action": "GET",
+      "response": {
+        "_id": "",
+        "name": "",
+        "nation": "",
+        "description": "",
+        "kcal": 0,
+        "ingredients": [""],
+        "img": ""
+      }
+    },
+    {
+      "description": "Get recipes by nationality",
+      "endpoint": "/api/recipes/nation/:id",
+      "action": "GET",
+      "response": [
+        {
+          "_id": "",
+          "name": "",
+          "nation": "",
+          "description": "",
+          "kcal": 0,
+          "ingredients": [""],
+          "img": ""
+        }
+      ]
+    }
+  ],
+  "ingredients": [
+    {
+      "description": "Get all ingredients",
+      "endpoint": "/api/ingredients/",
+      "action": "GET",
+      "response": [
+        {
+          "_id": "",
+          "name": "",
+          "source": "",
+          "food": "",
+          "gluten": false,
+          "img": ""
+        }
+      ]
+    },
+    {
+      "description": "Find ingredient by id",
+      "endpoint": "/api/ingredients/:id",
+      "action": "GET",
+      "response": {
+        "_id": "",
+        "name": "",
+        "source": "",
+        "food": "",
+        "gluten": false,
+        "img": ""
+      }
+    },
+
+    {
+      "description": "Find ingredient by name",
+      "endpoint": "/api/ingredients/name/:id",
+      "action": "GET",
+      "response": {
+        "_id": "",
+        "name": "",
+        "source": "",
+        "food": "",
+        "gluten": false,
+        "img": ""
+      }
+    },
+    {
+      "description": "Find ingredients by type of food: (carne, pescado, fruta, verdura, derivado, procesado, harina ,pasta, seta, cereal, tubérculo)",
+      "endpoint": "/api/ingredients/food/:id",
+      "action": "GET",
+      "response": [
+        {
+          "_id": "",
+          "name": "",
+          "source": "",
+          "food": "",
+          "gluten": false,
+          "img": ""
+        }
+      ]
+    },
+    {
+      "description": "Add ingredient",
+      "endpoint": "/api/ingredients",
+      "action": "POST",
+      "authentication": { "bearerToken": "" },
+      "parameters": {
+        "name": "",
+        "source": "",
+        "food": "",
+        "gluten": false,
+        "img": ""
+      },
+      "response": {
+        "_id": "",
+        "name": "",
+        "source": "",
+        "food": "",
+        "gluten": false,
+        "img": ""
+      }
+    },
+    {
+      "description": "Modify ingredient",
+      "endpoint": "/api/ingredients/:id",
+      "action": "PATCH",
+      "authentication": { "bearerToken": "" },
+      "parameters": {
+        "gluten": true
+      },
+      "response": {
+        "new": {
+          "gluten": true,
+          "_id": ""
+        },
+        "old": {
+          "_id": "",
+          "name": "",
+          "source": "",
+          "food": "",
+          "gluten": false,
+          "img": ""
+        }
+      }
+    }
+  ]
 }

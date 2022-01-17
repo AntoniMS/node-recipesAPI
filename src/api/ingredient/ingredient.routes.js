@@ -10,6 +10,8 @@ IngredientRoutes.get('/name/:name', getIngredientByName)
 IngredientRoutes.get('/food/:food', getIngredientByFood)
 IngredientRoutes.post('/', [isAuth], upload.single('img'), postNewIngredient)
 IngredientRoutes.patch('/:id', [isAuth], upload.single('img'), patchIngredient)
-IngredientRoutes.delete('/:id', [isAuth], upload.single('img'), deleteIngredient)
+
+//UNAVIABLE FOR USERS
+//IngredientRoutes.delete('/:id', [isAuth], upload.single('img'), deleteIngredient)  
 
 module.exports = IngredientRoutes

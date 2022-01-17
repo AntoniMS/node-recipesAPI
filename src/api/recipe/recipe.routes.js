@@ -9,6 +9,8 @@ RecipeRoutes.get('/:id', getRecipe)
 RecipeRoutes.get('/nation/:nation', getRecipeByNation)
 RecipeRoutes.post('/', [isAuth], upload.single('img'), postNewRecipe)
 RecipeRoutes.patch('/:id', [isAuth], upload.single('img'), patchRecipe)
+
+//UNAVIABLE FOR USERS
 //RecipeRoutes.delete('/:id', [isAuth], upload.single('img'), deleteRecipe)
 
 module.exports = RecipeRoutes
